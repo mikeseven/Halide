@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-android update project -p . --subprojects --target android-21
+android update project -p . --subprojects --target android-23
 if [ -z "$ANDROID_NDK_HOME" ]; then
     echo "Set ANDROID_NDK_HOME to point to your android ndk root directory"
     exit 1
@@ -14,7 +14,8 @@ c++ -g -Wall -std=c++11 edge_detect_generator.cpp deinterleave_generator.cpp ../
 # llvm will not compile for the R6 version of the ISA without Nan2008
 # and the gcc toolchain used by the Android build setup requires those
 # two options together.
-for arch in arm-32-android,armeabi arm-32-android-armv7s,armeabi-v7a arm-64-android,arm64-v8a mips-32-android,mips x86-64-android-sse41,x86_64 x86-32-android,x86 ; do
+# for arch in arm-32-android,armeabi arm-32-android-armv7s,armeabi-v7a arm-64-android,arm64-v8a mips-32-android,mips x86-64-android-sse41,x86_64 x86-32-android,x86 ; do
+for arch in arm-32-android,armeabi arm-32-android-armv7s,armeabi-v7a ; do
     # IFS is bash's internal field separator. Set it to comma to split arch.
     IFS=,
     set $arch

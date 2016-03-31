@@ -101,7 +101,7 @@ else()
 endif()
 
 if (NOT MSVC)
-    add_compile_options(-Wall
+    add_compile_options(-O3 -mavx -Wall
                         -Wno-unused-function
                         -Wcast-qual
                         -Woverloaded-virtual
